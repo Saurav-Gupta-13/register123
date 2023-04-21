@@ -14,18 +14,18 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type RegisterUpdateFormInputValues = {
-    name?: string;
-    age?: number;
+    firstName?: string;
+    lastName?: string;
 };
 export declare type RegisterUpdateFormValidationValues = {
-    name?: ValidationFunction<string>;
-    age?: ValidationFunction<number>;
+    firstName?: ValidationFunction<string>;
+    lastName?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type RegisterUpdateFormOverridesProps = {
     RegisterUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    name?: PrimitiveOverrideProps<TextFieldProps>;
-    age?: PrimitiveOverrideProps<TextFieldProps>;
+    firstName?: PrimitiveOverrideProps<TextFieldProps>;
+    lastName?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type RegisterUpdateFormProps = React.PropsWithChildren<{
     overrides?: RegisterUpdateFormOverridesProps | undefined | null;

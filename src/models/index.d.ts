@@ -12,8 +12,8 @@ type EagerRegister = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly name?: string | null;
-  readonly age?: number | null;
+  readonly firstName?: string | null;
+  readonly lastName?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -24,8 +24,8 @@ type LazyRegister = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly name?: string | null;
-  readonly age?: number | null;
+  readonly firstName?: string | null;
+  readonly lastName?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
