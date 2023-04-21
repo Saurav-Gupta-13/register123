@@ -156,13 +156,9 @@ export default function RegisterUpdateForm(props) {
         label="Password"
         isRequired={true}
         isReadOnly={false}
-        type="number"
-        step="any"
         value={password}
         onChange={(e) => {
-          let value = isNaN(parseInt(e.target.value))
-            ? e.target.value
-            : parseInt(e.target.value);
+          let { value } = e.target;
           if (onChange) {
             const modelFields = {
               email,

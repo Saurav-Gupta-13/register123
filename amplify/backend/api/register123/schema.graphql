@@ -1,6 +1,6 @@
 type Register @model @auth(rules: [{allow: public}]) {
   id: ID!
   email: AWSEmail!
-  password: Int!
+  password: String!
 }
  

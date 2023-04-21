@@ -20,7 +20,7 @@ export const schema = {
                 "password": {
                     "name": "password",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -70,5 +70,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.0",
-    "version": "6724f3d0456de99c4215dc1f032e408e"
+    "version": "3fc0d529fb1233264db8562b6208c839"
 };
