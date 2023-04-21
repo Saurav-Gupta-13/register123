@@ -23,20 +23,20 @@ export default function RegisterCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    email: "",
-    password: "",
+    name: "",
+    age: "",
   };
-  const [email, setEmail] = React.useState(initialValues.email);
-  const [password, setPassword] = React.useState(initialValues.password);
+  const [name, setName] = React.useState(initialValues.name);
+  const [age, setAge] = React.useState(initialValues.age);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setEmail(initialValues.email);
-    setPassword(initialValues.password);
+    setName(initialValues.name);
+    setAge(initialValues.age);
     setErrors({});
   };
   const validations = {
-    email: [{ type: "Required" }, { type: "Email" }],
-    password: [{ type: "Required" }],
+    name: [],
+    age: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -64,8 +64,8 @@ export default function RegisterCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          email,
-          password,
+          name,
+          age,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -112,54 +112,58 @@ export default function RegisterCreateForm(props) {
       {...rest}
     >
       <TextField
-        label="Email"
-        isRequired={true}
+        label="Name"
+        isRequired={false}
         isReadOnly={false}
-        value={email}
+        value={name}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              email: value,
-              password,
+              name: value,
+              age,
             };
             const result = onChange(modelFields);
-            value = result?.email ?? value;
+            value = result?.name ?? value;
           }
-          if (errors.email?.hasError) {
-            runValidationTasks("email", value);
+          if (errors.name?.hasError) {
+            runValidationTasks("name", value);
           }
-          setEmail(value);
+          setName(value);
         }}
-        onBlur={() => runValidationTasks("email", email)}
-        errorMessage={errors.email?.errorMessage}
-        hasError={errors.email?.hasError}
-        {...getOverrideProps(overrides, "email")}
+        onBlur={() => runValidationTasks("name", name)}
+        errorMessage={errors.name?.errorMessage}
+        hasError={errors.name?.hasError}
+        {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
-        label="Password"
-        isRequired={true}
+        label="Age"
+        isRequired={false}
         isReadOnly={false}
-        value={password}
+        type="number"
+        step="any"
+        value={age}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
-              email,
-              password: value,
+              name,
+              age: value,
             };
             const result = onChange(modelFields);
-            value = result?.password ?? value;
+            value = result?.age ?? value;
           }
-          if (errors.password?.hasError) {
-            runValidationTasks("password", value);
+          if (errors.age?.hasError) {
+            runValidationTasks("age", value);
           }
-          setPassword(value);
+          setAge(value);
         }}
-        onBlur={() => runValidationTasks("password", password)}
-        errorMessage={errors.password?.errorMessage}
-        hasError={errors.password?.hasError}
-        {...getOverrideProps(overrides, "password")}
+        onBlur={() => runValidationTasks("age", age)}
+        errorMessage={errors.age?.errorMessage}
+        hasError={errors.age?.hasError}
+        {...getOverrideProps(overrides, "age")}
       ></TextField>
       <Flex
         justifyContent="space-between"

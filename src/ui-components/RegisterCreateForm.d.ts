@@ -13,18 +13,18 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type RegisterCreateFormInputValues = {
-    email?: string;
-    password?: string;
+    name?: string;
+    age?: number;
 };
 export declare type RegisterCreateFormValidationValues = {
-    email?: ValidationFunction<string>;
-    password?: ValidationFunction<string>;
+    name?: ValidationFunction<string>;
+    age?: ValidationFunction<number>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type RegisterCreateFormOverridesProps = {
     RegisterCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    email?: PrimitiveOverrideProps<TextFieldProps>;
-    password?: PrimitiveOverrideProps<TextFieldProps>;
+    name?: PrimitiveOverrideProps<TextFieldProps>;
+    age?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type RegisterCreateFormProps = React.PropsWithChildren<{
     overrides?: RegisterCreateFormOverridesProps | undefined | null;
