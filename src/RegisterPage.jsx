@@ -3,15 +3,15 @@ import { DataStore } from '@aws-amplify/datastore';
 import { Register } from './models';
 
 function RegisterPage() {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
+  const handleFirstNameChange = (event) => {
+    setFirstName(event.target.value);
   };
 
-  const handleAgeChange = (event) => {
-    setAge(event.target.value);
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value);
   };
 
   const handleSubmit = async(event) => {
@@ -20,8 +20,8 @@ function RegisterPage() {
     try {
         await DataStore.save(
           new Register({
-            "name": name,
-            "age": age
+            "firstName": firstName,
+            "lastName": lastName
           })
         );
         console.log("Registration successful!");
@@ -35,22 +35,22 @@ function RegisterPage() {
       <h1>Register Page</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="firstName">First Name:</label>
           <input
             type="text"
-            id="name"
-            value={name}
-            onChange={handleNameChange}
+            id="firstName"
+            value={firstName}
+            onChange={handleFirstNameChange}
             required
           />
         </div>
         <div>
-          <label htmlFor="age">Age:</label>
+          <label htmlFor="lastName">Last Name:</label>
           <input
-            type="number"
-            id="age"
-            value={age}
-            onChange={handleAgeChange}
+            type="text"
+            id="lastName"
+            value={lastName}
+            onChange={handleLastNameChange}
             required
           />
         </div>
