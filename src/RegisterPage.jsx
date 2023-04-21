@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { DataStore } from '@aws-amplify/datastore';
+import { Register } from './models';
 
 function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -17,10 +19,22 @@ function RegisterPage() {
     setConfirmPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Do something with the form data, such as submitting it to a server
+    // Do something with the form data, such as submitting it to a server\
+    try {
+      await DataStore.save(
+        new Register({
+          "email": email,
+          "password": password
+        })
+      );
+      console.log("Registration successful!");
+    } catch (error) {
+      console.error("Error saving registration data:", error);
+    }
   };
+  
 
   return (
     <div>
@@ -56,7 +70,7 @@ function RegisterPage() {
             required
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" onClick={handleSubmit}>Register</button>
       </form>
     </div>
   );
