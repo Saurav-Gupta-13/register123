@@ -35,7 +35,7 @@ export default function RegisterCreateForm(props) {
     setErrors({});
   };
   const validations = {
-    email: [{ type: "Required" }],
+    email: [{ type: "Required" }, { type: "Email" }],
     password: [{ type: "Required" }],
   };
   const runValidationTasks = async (
@@ -140,9 +140,13 @@ export default function RegisterCreateForm(props) {
         label="Password"
         isRequired={true}
         isReadOnly={false}
+        type="number"
+        step="any"
         value={password}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
               email,

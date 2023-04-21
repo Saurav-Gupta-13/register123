@@ -13,7 +13,7 @@ type EagerRegister = {
   };
   readonly id: string;
   readonly email: string;
-  readonly password: string;
+  readonly password: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -25,7 +25,7 @@ type LazyRegister = {
   };
   readonly id: string;
   readonly email: string;
-  readonly password: string;
+  readonly password: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

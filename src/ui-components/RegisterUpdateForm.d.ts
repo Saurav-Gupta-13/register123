@@ -15,11 +15,11 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type RegisterUpdateFormInputValues = {
     email?: string;
-    password?: string;
+    password?: number;
 };
 export declare type RegisterUpdateFormValidationValues = {
     email?: ValidationFunction<string>;
-    password?: ValidationFunction<string>;
+    password?: ValidationFunction<number>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type RegisterUpdateFormOverridesProps = {
