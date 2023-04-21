@@ -1,0 +1,39 @@
+/***************************************************************************
+ * The contents of this file were generated with Amplify Studio.           *
+ * Please refrain from making any modifications to this file.              *
+ * Any changes to this file will be overwritten when running amplify pull. *
+ **************************************************************************/
+
+import * as React from "react";
+import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+export declare type ValidationResponse = {
+    hasError: boolean;
+    errorMessage?: string;
+};
+export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
+export declare type RegisterCreateFormInputValues = {
+    email?: string;
+    password?: string;
+};
+export declare type RegisterCreateFormValidationValues = {
+    email?: ValidationFunction<string>;
+    password?: ValidationFunction<string>;
+};
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type RegisterCreateFormOverridesProps = {
+    RegisterCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
+    email?: PrimitiveOverrideProps<TextFieldProps>;
+    password?: PrimitiveOverrideProps<TextFieldProps>;
+} & EscapeHatchProps;
+export declare type RegisterCreateFormProps = React.PropsWithChildren<{
+    overrides?: RegisterCreateFormOverridesProps | undefined | null;
+} & {
+    clearOnSuccess?: boolean;
+    onSubmit?: (fields: RegisterCreateFormInputValues) => RegisterCreateFormInputValues;
+    onSuccess?: (fields: RegisterCreateFormInputValues) => void;
+    onError?: (fields: RegisterCreateFormInputValues, errorMessage: string) => void;
+    onChange?: (fields: RegisterCreateFormInputValues) => RegisterCreateFormInputValues;
+    onValidate?: RegisterCreateFormValidationValues;
+} & React.CSSProperties>;
+export default function RegisterCreateForm(props: RegisterCreateFormProps): React.ReactElement;
