@@ -21,10 +21,12 @@ function RegisterPage() {
         await DataStore.save(
           new Register({
             "firstName": firstName,
-            "lastName": lastName
+            "lastName": lastName,
           })
         );
         console.log("Registration successful!");
+        console.log("First Name: ", firstName);
+        console.log("Last Name: ", lastName);
       } catch (error) {
         console.error("Error saving registration data:", error);
       }
